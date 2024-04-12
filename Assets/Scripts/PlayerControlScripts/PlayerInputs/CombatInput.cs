@@ -57,10 +57,33 @@ public class CombatInput : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (attackCooldown >= 1 && HeavyComboTwo == true)
+            if (attackCooldown >= 1 && HeavyComboTwo == true && HeavyComboThree == false)
             {
                 HeavyComboThree = true;
                 jerbulchaCombatAnim.SetTrigger("HeavyAttackThree");
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Mouse0) && attackCooldown >= 0 && !LightComboOne)
+        {
+            jerbulchaCombatAnim.SetTrigger("LightAttackOne");
+            LightComboOne = true;
+            attackCooldown = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (attackCooldown >= .5 && attackCooldown <= .95f && LightComboOne == true)
+            {
+                LightComboTwo = true;
+                jerbulchaCombatAnim.SetTrigger("LightAttackTwo");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (attackCooldown >= 1 && LightComboTwo == true && LightComboThree == false)
+            {
+                LightComboThree = true;
+                jerbulchaCombatAnim.SetTrigger("LightAttackThree");
             }
         }
 
@@ -76,6 +99,10 @@ public class CombatInput : MonoBehaviour
         HeavyComboOne = false;
         HeavyComboTwo = false;
         HeavyComboThree = false;
+        
+        LightComboOne = false;
+        LightComboTwo = false;
+        LightComboThree = false;
     }
 
     private void SetCombatIdle()
