@@ -52,6 +52,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             jerbulchaAnim.SetTrigger("Diving");
+            jerbulchaAnim.SetBool("IsWalking", false);
         }
     }
 
@@ -93,7 +94,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private void WalkAndRunAnim(float horizontal, float vertical)
     {
         //Walk Anim Trigger
-        if (horizontal == 0 && vertical == 0)
+        if (horizontal == 0 && vertical == 0 || !isGrounded)
         {
             jerbulchaAnim.SetBool("IsWalking", false);
         }
@@ -103,7 +104,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
         //Run Anim Trigger
-        if (jerbulchaAnim.GetBool("IsWalking") == true && isSprinting == true)
+        if (jerbulchaAnim.GetBool("IsWalking") == true && isSprinting == true && isGrounded)
         {
             jerbulchaAnim.SetBool("IsRunning", true);
         }
