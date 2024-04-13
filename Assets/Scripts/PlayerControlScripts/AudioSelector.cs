@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AudioSelector : MonoBehaviour
 {
+    //ATTACH THIS SCRIPT TO CHARACTER/ENTITY EMITTING AUDIO
+    //CHARACTER/ENTITY SHOULD HAVE AN AUDIO HOLDER COMPONENT HOLDING ALL AUDIO SOURCES THAT
+    //WILL BE USED FOR THIS CHARACTER/ENTITY
+
     [Header("Effort Sound Effects")]
     public AudioSource[] effortSounds;
 
@@ -38,7 +42,13 @@ public class AudioSelector : MonoBehaviour
     void Update()
     {
         WalkAndRunSoundCheck();
+    }
 
+    public void EffortSoundCheck()
+    {
+        int randomEffort = Random.Range(0, 5);
+        effortSounds[randomEffort].Play();
+        Debug.Log($"Playing effort sound {randomEffort}");
     }
 
     private void WalkAndRunSoundCheck()
@@ -59,15 +69,16 @@ public class AudioSelector : MonoBehaviour
             walkingSoundOn = false;
         }
         //Checks running AND walking to see if standing still
-        else if (soundPromptSource.GetBool(walkingPrompt) == false)
-        {
-            walkingSound.Stop();
-            walkingSoundOn = false;
-        }
         else if (soundPromptSource.GetBool(runningPrompt) == false)
         {
             runningSound.Stop();
             runningSoundOn = false;
+            if (soundPromptSource.GetBool(walkingPrompt) == false)
+            {
+                Debug.Log("No longer running");
+                walkingSound.Stop();
+                walkingSoundOn = false;
+            }
         }
     }
 }

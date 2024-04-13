@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CombatInput : MonoBehaviour
 {
+    //ATTACH THIS SCRIPT TO PLAYABLE CHARACTER MODEL
+
     [Header("Animator Reference")]
-    public Animator jerbulchaCombatAnim;
+    public Animator animToUse;
 
     [Header("Testing Purposes")]
     public bool IsEnemyClose;
@@ -21,6 +23,10 @@ public class CombatInput : MonoBehaviour
     public bool LightComboOne;
     public bool LightComboTwo;
     public bool LightComboThree;
+
+    [Header("Audio Controller Holder")]
+    public AudioSelector audioControl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +49,7 @@ public class CombatInput : MonoBehaviour
         attackCooldown += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Mouse1) && attackCooldown >= 0 && !HeavyComboOne)
         {
-            jerbulchaCombatAnim.SetTrigger("HeavyAttackOne");
+            animToUse.SetTrigger("HeavyAttackOne");
             HeavyComboOne = true;
             attackCooldown = 0;
         }
@@ -52,7 +58,7 @@ public class CombatInput : MonoBehaviour
             if (attackCooldown >= .5 && attackCooldown <= .95f && HeavyComboOne == true)
             {
                 HeavyComboTwo = true;
-                jerbulchaCombatAnim.SetTrigger("HeavyAttackTwo");
+                animToUse.SetTrigger("HeavyAttackTwo");
             }
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -60,13 +66,13 @@ public class CombatInput : MonoBehaviour
             if (attackCooldown >= 1 && HeavyComboTwo == true && HeavyComboThree == false)
             {
                 HeavyComboThree = true;
-                jerbulchaCombatAnim.SetTrigger("HeavyAttackThree");
+                animToUse.SetTrigger("HeavyAttackThree");
             }
         }
         
         if (Input.GetKeyDown(KeyCode.Mouse0) && attackCooldown >= 0 && !LightComboOne)
         {
-            jerbulchaCombatAnim.SetTrigger("LightAttackOne");
+            animToUse.SetTrigger("LightAttackOne");
             LightComboOne = true;
             attackCooldown = 0;
         }
@@ -75,7 +81,7 @@ public class CombatInput : MonoBehaviour
             if (attackCooldown >= .5 && attackCooldown <= .95f && LightComboOne == true)
             {
                 LightComboTwo = true;
-                jerbulchaCombatAnim.SetTrigger("LightAttackTwo");
+                animToUse.SetTrigger("LightAttackTwo");
             }
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -83,7 +89,7 @@ public class CombatInput : MonoBehaviour
             if (attackCooldown >= 1 && LightComboTwo == true && LightComboThree == false)
             {
                 LightComboThree = true;
-                jerbulchaCombatAnim.SetTrigger("LightAttackThree");
+                animToUse.SetTrigger("LightAttackThree");
             }
         }
 
@@ -109,11 +115,11 @@ public class CombatInput : MonoBehaviour
     {
         if (IsEnemyClose)
         {
-            jerbulchaCombatAnim.SetBool("CombatTime", true);
+            animToUse.SetBool("CombatTime", true);
         }
         else
         {
-            jerbulchaCombatAnim.SetBool("CombatTime", false);
+            animToUse.SetBool("CombatTime", false);
         }
     }
 }
