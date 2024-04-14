@@ -52,7 +52,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             jerbulchaAnim.SetTrigger("Diving");
-            jerbulchaAnim.SetBool("IsWalking", false);
+            //jerbulchaAnim.SetBool("IsWalking", false);
         }
     }
 

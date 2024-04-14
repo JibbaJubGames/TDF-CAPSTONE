@@ -15,6 +15,12 @@ public class AudioSelector : MonoBehaviour
     public AudioSource walkingSound;
     public AudioSource runningSound;
 
+    //Use for sounds that are necessary to the character/entity but don't quite fit the other spaces
+    [Header("Specialty Sound Effects")]
+    public AudioSource specialtySoundOne;
+    public AudioSource specialtySoundTwo;
+    public AudioSource specialtySoundThree;
+
     [Header("Voice Lines")]
     public AudioSource[] voiceLines;
 
@@ -79,6 +85,22 @@ public class AudioSelector : MonoBehaviour
                 walkingSound.Stop();
                 walkingSoundOn = false;
             }
+        }
+    }
+
+    public void SpecialtySounds(int specialtyNumber)
+    {
+        if (specialtyNumber == 1)
+        {
+            specialtySoundOne.Play();
+        }
+        else if (specialtyNumber == 2)
+        {
+            specialtySoundTwo.Play();
+        }
+        else if (specialtyNumber == 3)
+        {
+            specialtySoundThree.Play();
         }
     }
 }
