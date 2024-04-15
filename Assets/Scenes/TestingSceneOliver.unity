@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f51520561847d4ea76bc153566bf12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jerbulchaCombatAnim: {fileID: 110074639}
+  animToUse: {fileID: 0}
   IsEnemyClose: 0
   attackCooldown: 0.5
   HeavyComboOne: 0
@@ -454,6 +454,7 @@ MonoBehaviour:
   LightComboOne: 0
   LightComboTwo: 0
   LightComboThree: 0
+  audioControl: {fileID: 0}
 --- !u!1 &345123335
 GameObject:
   m_ObjectHideFlags: 3
@@ -779,7 +780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527934359}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2154605, y: -0.7387747, z: 0.27654138, w: 0.5755984}
+  m_LocalRotation: {x: 0.21546048, y: -0.7387748, z: 0.27654138, w: 0.57559836}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1206,7 +1207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580158138}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21814027, y: -0.73747814, z: 0.27998084, w: 0.57458824}
+  m_LocalRotation: {x: 0.21814024, y: -0.73747814, z: 0.27998084, w: 0.5745882}
   m_LocalPosition: {x: 6.6523023, y: 7.5593147, z: 1.6775914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1698,6 +1699,9 @@ MonoBehaviour:
   effortSounds: []
   walkingSound: {fileID: 972275847}
   runningSound: {fileID: 972275846}
+  specialtySoundOne: {fileID: 0}
+  specialtySoundTwo: {fileID: 0}
+  specialtySoundThree: {fileID: 0}
   voiceLines: []
   soundPromptSource: {fileID: 110074639}
   walkingPrompt: IsWalking
