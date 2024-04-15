@@ -52,7 +52,6 @@ public class ThirdPersonMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             jerbulchaAnim.SetTrigger("Diving");
-            //jerbulchaAnim.SetBool("IsWalking", false);
         }
     }
 
@@ -72,29 +71,32 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void Walk()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
-
-        if (direction.magnitude >= 0.1f)
+        if (PlayerHealth.midAttack == false)
         {
-            //Should be multiplied by Rad2Deg, but that doesn't exist apparently, so for now I use this...
-            float targetAngle = MathF.Atan2(direction.x, direction.z) * 360 / (MathF.PI * 2) + cam.eulerAngles.y;
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            if (direction.magnitude >= 0.1f)
+            {
+                //Should be multiplied by Rad2Deg, but that doesn't exist apparently, so for now I use this...
+                float targetAngle = MathF.Atan2(direction.x, direction.z) * 360 / (MathF.PI * 2) + cam.eulerAngles.y;
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            }
+
+            WalkAndRunAnim(horizontal, vertical);
         }
-
-        WalkAndRunAnim(horizontal, vertical);
     }
 
     private void WalkAndRunAnim(float horizontal, float vertical)
     {
         //Walk Anim Trigger
-        if (horizontal == 0 && vertical == 0 || !isGrounded)
+        if (horizontal == 0 && vertical == 0 || !isGrounded || PlayerHealth.midAttack)
         {
             jerbulchaAnim.SetBool("IsWalking", false);
         }
