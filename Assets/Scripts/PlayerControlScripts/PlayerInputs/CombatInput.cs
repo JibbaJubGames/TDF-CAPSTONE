@@ -27,6 +27,9 @@ public class CombatInput : MonoBehaviour
     [Header("Audio Controller Holder")]
     public AudioSelector audioControl;
 
+    [Header("Music Swap")]
+    public MusicFade musicSwap;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,10 +119,12 @@ public class CombatInput : MonoBehaviour
         if (IsEnemyClose)
         {
             animToUse.SetBool("CombatTime", true);
+            musicSwap.BattleMusicFadeIn();
         }
         else
         {
             animToUse.SetBool("CombatTime", false);
+            musicSwap.IdleMusicFadeIn();
         }
     }
 }

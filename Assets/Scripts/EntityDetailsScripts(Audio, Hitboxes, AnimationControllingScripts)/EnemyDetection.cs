@@ -7,14 +7,8 @@ using UnityEngine;
 public class EnemyDetection : MonoBehaviour
 {
     [Header("Detection Space")]
-    [Range(1,10)]
-    public float fightRadius;
+    public float fightRadius = 15;
     public LayerMask targetLayer;
-
-    [Header("Music Swap")]
-    public MusicFade musicController;
-    //Only switch to true in inspector if this is the enemy detection script on Jerbulcha
-    public bool isPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,15 +27,11 @@ public class EnemyDetection : MonoBehaviour
         {
             Debug.Log("Hit Enemy");
             CombatInput.IsEnemyClose = true;
-
-            musicController.BattleMusicFadeIn();
         }
         else
         {
+            Debug.Log("No enemies here");
             CombatInput.IsEnemyClose = false;
-          
-            musicController.IdleMusicFadeIn();
-            
         }
     }
 
