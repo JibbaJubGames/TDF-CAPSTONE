@@ -5,13 +5,14 @@ using UnityEngine;
 public class GetTackledScript : MonoBehaviour
 {
     private static Animator tackleAnim;
-    private static PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     public bool beenTackledYet = false;
     public float tackleResetTimer = 0f;
     // Start is called before the first frame update
     void Start()
     {
         tackleAnim = GetComponent<Animator>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -29,6 +30,7 @@ public class GetTackledScript : MonoBehaviour
         tackleResetTimer = 0f;
         beenTackledYet = true;
         tackleAnim.SetTrigger("HitByDive");
-        playerHealth.TakeDamage();
+        //Connect line below/this script to player health
+        playerHealth.TakeDamageFromTackle();
     }
 }

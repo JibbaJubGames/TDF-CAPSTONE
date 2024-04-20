@@ -38,6 +38,8 @@ public class CombatInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log($"An enemy is close that we can fight is a {IsEnemyClose} statement");
+
         SetCombatIdle();
 
         ComboCheck();
@@ -116,13 +118,15 @@ public class CombatInput : MonoBehaviour
 
     private void SetCombatIdle()
     {
-        if (IsEnemyClose)
+        if (MusicFade.enemyCount >= 1)
         {
+            IsEnemyClose = true;
             animToUse.SetBool("CombatTime", true);
             musicSwap.BattleMusicFadeIn();
         }
         else
         {
+            IsEnemyClose = false;
             animToUse.SetBool("CombatTime", false);
             musicSwap.IdleMusicFadeIn();
         }

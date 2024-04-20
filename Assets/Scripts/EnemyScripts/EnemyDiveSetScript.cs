@@ -23,7 +23,6 @@ public class EnemyDiveSetScript : MonoBehaviour
         {
         attackRandomizer.divingEnemy = true;
         setEnemyType = true;
-        navScript.hasDived = false;
         }
         else if (diver == 2 && !setEnemyType)
         {

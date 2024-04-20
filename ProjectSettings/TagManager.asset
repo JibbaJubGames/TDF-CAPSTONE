@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - DiveBox
   - Jerbulcha
+  - Offspring
   layers:
   - Default
   - TransparentFX

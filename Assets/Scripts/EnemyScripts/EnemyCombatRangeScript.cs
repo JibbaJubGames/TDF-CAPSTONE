@@ -10,10 +10,13 @@ public class EnemyCombatRangeScript : MonoBehaviour
     [Range(1, 15)]
     public float fightRadius;
     public LayerMask targetLayer;
+
+
+    private Animator animCheck;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animCheck = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,9 +30,9 @@ public class EnemyCombatRangeScript : MonoBehaviour
     {
         if (Physics.CheckSphere(this.transform.position, attackRadius, targetLayer))
         {
-            Debug.Log("Attacking Jerbulcha");
             EnemyAttackRandomizer.closeEnoughToAttack = true;
             EnemyNavScript.closeTheDistance = false;
+            animCheck.SetBool("CloseTheDistance", false);
         }
         else
         {
@@ -42,12 +45,13 @@ public class EnemyCombatRangeScript : MonoBehaviour
     {
         if (Physics.CheckSphere(this.transform.position, fightRadius, targetLayer) && !EnemyAttackRandomizer.closeEnoughToAttack)
         {
-            Debug.Log("Found jerbulcha");
             EnemyNavScript.closeTheDistance = true;
+            animCheck.SetBool("CloseTheDistance", true);
         }
         else
         {
             EnemyNavScript.closeTheDistance = false;
+            animCheck.SetBool("CloseTheDistance", false);
         }
     }
 

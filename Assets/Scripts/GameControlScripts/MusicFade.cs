@@ -10,6 +10,8 @@ public class MusicFade : MonoBehaviour
 
     bool backgroundPlaying = false;
     bool battlePlaying = false;
+
+    public static int enemyCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class MusicFade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log($"Enemies nearby: {enemyCount}");
     }
 
     public void IdleMusicFadeIn()

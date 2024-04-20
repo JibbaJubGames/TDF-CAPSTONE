@@ -13,7 +13,9 @@ public class EnemyAttackRandomizer : MonoBehaviour
     public bool divingEnemy = false;
 
     //Bool below only matters for diving enemies
-    public static bool hasDived = false;
+    public bool hasDived = false;
+
+    public bool isAttacking = false;
     
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,6 @@ public class EnemyAttackRandomizer : MonoBehaviour
     void Update()
     {
         Debug.Log($"Diving enemy is equal to {divingEnemy}");
-        Debug.Log($"The enemy has dived is equal to {hasDived}");
         if (closeEnoughToAttack) timer += Time.deltaTime;
         DiveCheck();
         RandomAttack();
@@ -43,20 +44,30 @@ public class EnemyAttackRandomizer : MonoBehaviour
         {
             enemyAnim.SetTrigger("DiveAttack");
             hasDived = true;
-            divingEnemy = false;
             enemyAnim.SetTrigger("DiveComplete");
         }
-        navScript.hasDived = enemyAnim.GetBool("DiveComplete");
     }
 
     private void RandomAttack()
     {
-        if (timer > 3f && closeEnoughToAttack && !divingEnemy)
+        if (timer > 2f && closeEnoughToAttack && !divingEnemy)
         {
             attackNumber = Random.Range(0, 5);
             enemyAnim.SetTrigger(enemyAttacks[attackNumber]);
             Debug.Log($"{enemyAttacks[attackNumber]} is up next!");
             timer = 0;
+        }
+    }
+
+    public void AttackStateSwap(string attacking)
+    {
+        if (attacking == "Yes")
+        {
+            isAttacking = true;
+        }
+        if (attacking == "No")
+        {
+            isAttacking = false;
         }
     }
 }

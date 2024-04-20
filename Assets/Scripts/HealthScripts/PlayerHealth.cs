@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
 
     static public bool midAttack = false;
+    static public bool heavyComboEnd = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +22,15 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         DamageTimer();
+
+        if (heavyComboEnd) { Debug.Log("HEAVY FINISH ATTACK"); }
+        Debug.Log($"Mid attack is a {midAttack} statement");
     }
 
     private void DamageTimer()
     {
         damageTimer += Time.deltaTime;
-        if (damageTimer > 1f)
+        if (damageTimer > 2f)
         {
             beenDamaged = false;
         }
@@ -35,11 +39,24 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage()
     {
         if (!beenDamaged)
-        {   
+        {
+        midAttack = false;
         beenDamaged = true;
         damageTimer = 0f;
         Debug.Log("Jerbulcha has been hit");
         animToTrigger.SetTrigger("TookDamage");
+            ResetAttacks();
+
+        }
+    }
+    public void TakeDamageFromTackle()
+    {
+        if (!beenDamaged)
+        {   
+        midAttack = false;
+        beenDamaged = true;
+        damageTimer = 0f;
+        Debug.Log("Jerbulcha has been tackled");
         }
     }
 
@@ -53,5 +70,27 @@ public class PlayerHealth : MonoBehaviour
         {
             midAttack = false;
         }
+    }
+
+    public void HeavyComboSwap(string HeavyCombo)
+    {
+        if (HeavyCombo == "Yes")
+        {
+            heavyComboEnd = true;
+        }
+        if (HeavyCombo == "No")
+        {
+            heavyComboEnd = false;
+        }
+    }
+
+    private void ResetAttacks()
+    {
+        animToTrigger.SetBool("HeavyAttackOne", false);
+        animToTrigger.SetBool("HeavyAttackTwo", false);
+        animToTrigger.SetBool("HeavyAttackThree", false);
+        animToTrigger.SetBool("LightAttackOne", false);
+        animToTrigger.SetBool("LightAttackTwo", false);
+        animToTrigger.SetBool("LightAttackThree", false);
     }
 }

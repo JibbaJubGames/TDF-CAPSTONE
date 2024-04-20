@@ -10,7 +10,8 @@ public class EnemyDealDamageScript : MonoBehaviour
     private PlayerHealth playerHealth;
 
     //Used for dive enemy check
-    private EnemyNavScript diveEnemyCheck;
+    private EnemyAttackRandomizer diveEnemyCheck;
+    EnemyNavScript navScript;
 
     //Below bool only matters for diving enemies
     public bool hitByDive = false;
@@ -18,8 +19,10 @@ public class EnemyDealDamageScript : MonoBehaviour
 
     private void Start()
     {
-        diveEnemyCheck = this.GetComponent<EnemyNavScript>();
+        navScript = this.GetComponentInParent<EnemyNavScript>();
+        diveEnemyCheck = this.GetComponentInParent<EnemyAttackRandomizer>();
         tackleScript = GameObject.FindWithTag("Jerbulcha").GetComponent<GetTackledScript>();
+        playerHealth = GameObject.FindWithTag("Jerbulcha").GetComponent<PlayerHealth>();
     }
     private void Update()
     {
@@ -30,14 +33,12 @@ public class EnemyDealDamageScript : MonoBehaviour
     {
 
         
-        if (other.gameObject.tag == playerTag && isAttacking)
+        if (other.gameObject.tag == playerTag && diveEnemyCheck.isAttacking)
         {
             Debug.Log("Attacking Player");
-            playerHealth = other.gameObject.GetComponentInParent<PlayerHealth>();
             playerHealth.TakeDamage();
         }
-        
-        else if (other.gameObject.tag == playerTag && diveEnemyCheck.hasDived)
+        if (other.gameObject.tag == playerTag && diveEnemyCheck.divingEnemy && navScript.midDive)
         {
             if (!tackleScript.beenTackledYet)
             {
@@ -52,4 +53,6 @@ public class EnemyDealDamageScript : MonoBehaviour
             Debug.Log("Touched player");
         }
     }
+
+    
 }

@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class EnemyDetection : MonoBehaviour
 {
-    [Header("Detection Space")]
-    public float fightRadius = 15;
-    public LayerMask targetLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,27 +15,22 @@ public class EnemyDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        EnemyCheck();
     }
 
-    private void EnemyCheck()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Physics.CheckSphere(this.transform.position, fightRadius, targetLayer))
+        if (other.tag == "Offspring")
         {
-            Debug.Log("Hit Enemy");
-            CombatInput.IsEnemyClose = true;
-        }
-        else
-        {
-            Debug.Log("No enemies here");
-            CombatInput.IsEnemyClose = false;
+            MusicFade.enemyCount++;
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnTriggerExit(Collider other)
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(this.transform.position, fightRadius);
+        if (other.tag == "Offspring")
+        {
+            MusicFade.enemyCount--;
+        }
     }
 
 }
