@@ -67,8 +67,8 @@ public class EnemyHealth : MonoBehaviour
     public void EnemyDeath()
     {
         enemyAnim.SetTrigger("HasDied");
+        if (!isDead) MusicFade.enemyCount--;
         isDead = true;
-        MusicFade.enemyCount--;
         
         this.gameObject.transform.position = 
         new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z-1 * Time.deltaTime);

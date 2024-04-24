@@ -9,7 +9,7 @@ public class EnemyNavScript : MonoBehaviour
     public Transform diveBox;
     private NavMeshAgent enemy;
     private EnemyAttackRandomizer diveCheck;
-    public static bool closeTheDistance = false;
+    public bool closeTheDistance = false;
     private EnemyHealth enemyHealth;
 
     //The bools below only matters for diving enemies
@@ -51,7 +51,7 @@ public class EnemyNavScript : MonoBehaviour
         }
 
 
-        if (EnemyAttackRandomizer.closeEnoughToAttack && !midDive && !onGround)
+        if (diveCheck.closeEnoughToAttack && !midDive && !onGround)
         {
         Vector3 playerPos = player.transform.position;
         Vector3 npcPos = gameObject.transform.position;

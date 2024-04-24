@@ -68,6 +68,7 @@ public class AudioSelector : MonoBehaviour
         //Checks if running but not walking
         else if (soundPromptSource.GetBool(runningPrompt) == true && !runningSoundOn)
         {
+            Debug.Log("We running");
             walkingSound.Stop();
             runningSound.Play();
             runningSoundOn = true;

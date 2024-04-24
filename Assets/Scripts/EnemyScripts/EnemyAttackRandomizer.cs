@@ -9,7 +9,7 @@ public class EnemyAttackRandomizer : MonoBehaviour
     public int attackNumber;
     public string[] enemyAttacks;
     float timer = 0f;
-    public static bool closeEnoughToAttack = false;
+    public bool closeEnoughToAttack = false;
     public bool divingEnemy = false;
 
     //Bool below only matters for diving enemies
