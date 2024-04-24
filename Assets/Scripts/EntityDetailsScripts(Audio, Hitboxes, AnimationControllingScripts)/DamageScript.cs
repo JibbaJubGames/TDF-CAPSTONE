@@ -17,7 +17,12 @@ public class DamageScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == enemyTag && PlayerHealth.midAttack)
+        if (other.gameObject.tag == enemyTag && PlayerHealth.heavyComboEnd)
+        {
+            enemyHealth = other.gameObject.GetComponentInParent<EnemyHealth>();
+            enemyHealth.TakeBigDamage();
+        }
+        else if (other.gameObject.tag == enemyTag && PlayerHealth.midAttack)
         {
             enemyHealth = other.gameObject.GetComponentInParent<EnemyHealth>();
             enemyHealth.TakeDamage();
