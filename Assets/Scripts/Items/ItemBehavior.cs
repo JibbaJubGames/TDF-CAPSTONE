@@ -18,6 +18,8 @@ public class ItemBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.transform.parent = null;
+        this.transform.localScale = Vector3.one;
         rb.AddForce(transform.up * jumpForce);
         
         m_EulerAngleVelocity = new Vector3(0, rotationSpeed, 0);

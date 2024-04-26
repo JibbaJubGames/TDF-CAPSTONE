@@ -28,13 +28,21 @@ public class LockOnSystem : MonoBehaviour
         ArrowOffAtDistance();
         Debug.Log("Found " + enemies.Length + " enemies");
         targetArrow.transform.position = new Vector3(enemies[lockedTarget].gameObject.transform.position.x, enemies[lockedTarget].gameObject.transform.position.y + 0.5f, enemies[lockedTarget].gameObject.transform.position.z);
-
+        
 
         TriggerLock();
         PreviousTarget(enemies);
         NextTarget(enemies);
-
+        AvoidOutsideOfBoundsError();
         FaceTarget();
+    }
+
+    private void AvoidOutsideOfBoundsError()
+    {
+        if (lockedTarget > enemyCount)
+        {
+            lockedTarget = enemyCount;
+        }
     }
 
     private void ArrowOffAtDistance()

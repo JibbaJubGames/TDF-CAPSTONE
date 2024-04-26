@@ -9,13 +9,16 @@ public class EnemyHealth : MonoBehaviour
     private Animator enemyAnim;
     private int enemyHealth = 15;
 
+    private ItemDrop dropSource;
     private EnemyAttackRandomizer attackCheck;
     public bool isDead = false;
+    private bool droppedItem = false;
     // Start is called before the first frame update
     void Start()
     {
         attackCheck = GetComponent<EnemyAttackRandomizer>();
         enemyAnim = GetComponent<Animator>();
+        dropSource = GetComponent<ItemDrop>();
     }
 
     // Update is called once per frame
@@ -66,7 +69,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyDeath()
     {
+        //Try fic?
         enemyAnim.SetTrigger("HasDied");
+        if (!droppedItem)dropSource.DropRandomItem(); droppedItem = true;
         if (!isDead) MusicFade.enemyCount--;
         isDead = true;
         
