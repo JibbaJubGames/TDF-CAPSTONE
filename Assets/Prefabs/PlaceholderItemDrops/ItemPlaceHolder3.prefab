@@ -151,3 +151,5 @@ MonoBehaviour:
   rb: {fileID: 3206965071592233038}
   jumpForce: 200
   rotationSpeed: 65
+  GameObject: {fileID: 0}
+  itemName: Steel

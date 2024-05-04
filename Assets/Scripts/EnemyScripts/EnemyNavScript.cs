@@ -9,6 +9,7 @@ public class EnemyNavScript : MonoBehaviour
     public Transform diveBox;
     private NavMeshAgent enemy;
     private EnemyAttackRandomizer diveCheck;
+    private EnemyCombatRangeScript range;
     public bool closeTheDistance = false;
     private EnemyHealth enemyHealth;
 
@@ -18,6 +19,7 @@ public class EnemyNavScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        range = GetComponent<EnemyCombatRangeScript>();
         enemy = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").transform;
         diveBox = GameObject.FindWithTag("DiveBox").transform;
@@ -33,7 +35,7 @@ public class EnemyNavScript : MonoBehaviour
         {
             enemy.destination = enemy.transform.position;
         }
-        else if (closeTheDistance && !onGround)
+        else if (closeTheDistance && !onGround && range.hasRoared == true)
         {
             enemy.destination = player.position;
         }

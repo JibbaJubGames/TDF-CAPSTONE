@@ -30,7 +30,7 @@ public class MusicFade : MonoBehaviour
         {
             battle.Stop();
         }
-        background.volume = Mathf.Lerp(background.volume, .5f, .2f * Time.deltaTime);
+        background.volume = Mathf.Lerp(background.volume, .25f, .2f * Time.deltaTime);
         if (backgroundPlaying == false)
         {
             background.Play();
@@ -45,7 +45,7 @@ public class MusicFade : MonoBehaviour
         {
             background.Stop();
         }
-        battle.volume = Mathf.Lerp(battle.volume, .5f, .4f * Time.deltaTime);
+        battle.volume = Mathf.Lerp(battle.volume, .25f, .4f * Time.deltaTime);
         if (battlePlaying == false)
         {
             battle.Play();

@@ -31,10 +31,4 @@ public class EnemyRoarCheck : MonoBehaviour
             }
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(this.transform.position, ScreamRadius);
-    }
 }

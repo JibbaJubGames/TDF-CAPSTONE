@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("Animator for getting damaged visual")]
     public Animator animToTrigger;
 
+    static public int playerMaxHealth = 20;
+    static public int playerHealth = 15;
 
     static public bool midAttack = false;
     static public bool heavyComboEnd = false;
@@ -43,7 +45,8 @@ public class PlayerHealth : MonoBehaviour
         midAttack = false;
         beenDamaged = true;
         damageTimer = 0f;
-        Debug.Log("Jerbulcha has been hit");
+            playerHealth--;
+        Debug.Log($"Jerbulcha has been hit! {playerHealth} health remaining!");
         animToTrigger.SetTrigger("TookDamage");
             ResetAttacks();
 

@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UseItemButton : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public static void UseItem()
+    {
+        if (SelectedItemUpdate.itemType != "Steel" && SelectedItemUpdate.itemType != "")
+
+        if (SelectedItemUpdate.itemType == "Health") UseHealthCrystal();
+
+        else if (SelectedItemUpdate.itemType == "Attack") UseAttackCrystal();
+
+                
+    }
+
+    private static void UseAttackCrystal()
+    {
+        if (InventoryCount.attackCrystalCount > 0)
+        {
+            //Hook up double damage here
+        }
+    }
+
+    public static void UseHealthCrystal()
+    {
+        if (InventoryCount.healthCrystalCount > 0)
+        {
+            PlayerHealth.playerHealth = PlayerHealth.playerHealth + PlayerHealth.playerMaxHealth / 10;
+            InventoryCount.healthCrystalCount--;
+            SelectedItemUpdate.chosenText.text = $"Health Crystal ({InventoryCount.healthCrystalCount})";
+        }
+    }
+}
+

@@ -122,6 +122,8 @@ MonoBehaviour:
   rb: {fileID: -1839507499245675366}
   jumpForce: 200
   rotationSpeed: 65
+  GameObject: {fileID: 0}
+  itemName: Attack
 --- !u!54 &-1839507499245675366
 Rigidbody:
   m_ObjectHideFlags: 0

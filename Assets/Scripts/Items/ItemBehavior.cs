@@ -15,6 +15,8 @@ public class ItemBehavior : MonoBehaviour
     private GameObject GameObject;
 
     private Vector3 m_EulerAngleVelocity;
+
+    public string itemName;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +38,33 @@ public class ItemBehavior : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("picked up an item");
+            if (itemName == "Health") pickUpInfoFill(1);
+            if (itemName == "Attack") pickUpInfoFill(2);
+            if (itemName == "Steel") pickUpInfoFill(3);
             //TO DO: implement something actually happening when you pick up an item and also maybe a sound effect
             Destroy(gameObject);
         }
+    }
+
+    private void pickUpInfoFill(int itemType)
+    {
+        if (itemType == 1)
+        {
+            ItemManager.healthCrystalCount++;
+            InventoryCount .healthCrystalCount++;
+        }
+        if (itemType == 2)
+        {
+            ItemManager.attackCrystalCount++;
+            InventoryCount.attackCrystalCount++;
+        }
+
+        if (itemType == 3)
+        {
+            ItemManager.godlySteelCount++;
+            InventoryCount.godlySteelCount++;
+        }
+        ItemManager.itemCountReset = 0f;
     }
 
 }

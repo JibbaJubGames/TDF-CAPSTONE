@@ -37,7 +37,10 @@ public class EnemyCombatRangeScript : MonoBehaviour
 
     public void RoarSwitch()
     {
-        if (!hasRoared) hasRoared = true;
+        if (!hasRoared)
+        {
+            hasRoared = true;
+        }
     }
 
     private void CheckIfAttackTime()
