@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using TMPro;
 
 public class UseItemButton : MonoBehaviour
 {
@@ -13,7 +15,6 @@ public class UseItemButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public static void UseItem()
@@ -29,10 +30,13 @@ public class UseItemButton : MonoBehaviour
 
     private static void UseAttackCrystal()
     {
+        
         if (InventoryCount.attackCrystalCount > 0)
         {
-            //Hook up double damage here
-        }
+            PlayerStatsScript.doubleAttackTimer = 10;
+            InventoryCount.attackCrystalCount--;
+            SelectedItemUpdate.chosenText.text = $"Attack Crystal ({InventoryCount.attackCrystalCount})";
+        }   
     }
 
     public static void UseHealthCrystal()

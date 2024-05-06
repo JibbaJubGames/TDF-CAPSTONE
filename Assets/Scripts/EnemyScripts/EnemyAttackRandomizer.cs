@@ -32,7 +32,6 @@ public class EnemyAttackRandomizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"Diving enemy is equal to {divingEnemy}");
         if (closeEnoughToAttack) timer += Time.deltaTime;
         DiveCheck();
         RandomAttack();

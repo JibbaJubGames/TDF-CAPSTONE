@@ -35,7 +35,7 @@ public class BlacksmithSubtitle : MonoBehaviour
         OpenCloseMenu();
     }
 
-    private void LineEscapeClause(int thisLine)
+    public void LineEscapeClause(int thisLine)
     {
         if (thisLine != 1) GreetingLine.Stop();
         if (thisLine != 2) OpenMenuLine.Stop();

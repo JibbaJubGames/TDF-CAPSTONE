@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -7,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public bool beenDamaged = false;
     private float damageTimer = 0f;
     private Animator enemyAnim;
-    private int enemyHealth = 15;
+    private float enemyHealth = 15;
 
     private ItemDrop dropSource;
     private EnemyAttackRandomizer attackCheck;
@@ -49,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
             beenDamaged = true;
             damageTimer = 0f;
             enemyAnim.SetTrigger("SmallHit");
-            enemyHealth--;
+            enemyHealth -= PlayerStatsScript.damage;
             Debug.Log($"Enemy has {enemyHealth} health left");
         }
     }
@@ -62,14 +63,13 @@ public class EnemyHealth : MonoBehaviour
             beenDamaged = true;
             damageTimer = 0f;
             enemyAnim.SetTrigger("BigHit");
-            enemyHealth -= 3;
+            enemyHealth -= PlayerStatsScript.damage * 3;
             Debug.Log($"Enemy has {enemyHealth} health left and took BIG DAMAGE");
         }
     }
 
     public void EnemyDeath()
     {
-        //Try fic?
         enemyAnim.SetTrigger("HasDied");
         if (!droppedItem)dropSource.DropRandomItem(); droppedItem = true;
         if (!isDead) MusicFade.enemyCount--;

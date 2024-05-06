@@ -12,7 +12,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
 
     [Header("Movement")]
-    public float speed = 6;
+    public float speed = PlayerStatsScript.speed;
     public float gravity = -9.81f;
     public float jumpHeight = 3;
 

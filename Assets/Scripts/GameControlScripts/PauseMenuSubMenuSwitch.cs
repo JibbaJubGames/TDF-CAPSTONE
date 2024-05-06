@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseMenuSubMenuSwitch : MonoBehaviour
 {
     public GameObject menuToOpen;
-    public GameObject menuToClose;
+    public GameObject [] menuToClose = new GameObject [3];
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +20,9 @@ public class PauseMenuSubMenuSwitch : MonoBehaviour
 
     public void SwitchMenu()
     {
-        menuToOpen.SetActive(true);
-        menuToClose.SetActive(false);
-        
+        menuToOpen.SetActive (true);
+        menuToClose[0].SetActive (false);
+        menuToClose[1].SetActive (false);
+        menuToClose[2].SetActive (false);
     }
 }

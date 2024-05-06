@@ -30,7 +30,6 @@ public class EnemyNavScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"Enemy Nav Has Dived is equal to {onGround}");
         if (enemyHealth.isDead == true)
         {
             enemy.destination = enemy.transform.position;
@@ -78,6 +77,5 @@ public class EnemyNavScript : MonoBehaviour
     public void DiveTargetTrigger()
     {
         midDive = true;
-        Debug.Log("Successfully called dive trigger");
     }
 }

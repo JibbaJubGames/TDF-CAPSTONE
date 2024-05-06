@@ -21,9 +21,6 @@ public class ItemPickupBar : MonoBehaviour
         if (itemType == "Health") { HealthCrystalInfo(); }
         if (itemType == "Attack") { AttackCrystalInfo(); }
         if (itemType == "Steel") { GodlySteelInfo(); }
-        Debug.Log(ItemManager.godlySteelCount + " godly steel");
-        Debug.Log(ItemManager.attackCrystalCount + " attack crystals");
-        Debug.Log(ItemManager.healthCrystalCount + " health crystals");
     }
     public void AttackCrystalInfo()
     {

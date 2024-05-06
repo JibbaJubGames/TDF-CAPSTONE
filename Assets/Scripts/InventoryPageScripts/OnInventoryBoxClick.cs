@@ -30,6 +30,7 @@ public class OnInventoryBoxClick : MonoBehaviour
     {
         SelectedItemUpdate.chosenItem.sprite = thisItem.sprite;
         if (thisItemType == "") SelectedItemUpdate.chosenText.text = "";
+        else if (thisItemType == "Weapon") SelectedItemUpdate.chosenText.text = thisItemName;
         else SelectedItemUpdate.chosenText.text = thisItemName + $" ({itemCount})";
         selection.chosenDescriptionText.text = thisItemDescription;
         SelectedItemUpdate.itemType = thisItemType;

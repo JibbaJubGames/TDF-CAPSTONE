@@ -26,7 +26,6 @@ public class LockOnSystem : MonoBehaviour
         enemies = Physics.OverlapSphere(this.transform.position, lockonRadius, TargetLayer);
         enemyCount = enemies.Length - 1;
         ArrowOffAtDistance();
-        Debug.Log("Found " + enemies.Length + " enemies");
         targetArrow.transform.position = new Vector3(enemies[lockedTarget].gameObject.transform.position.x, enemies[lockedTarget].gameObject.transform.position.y + 0.5f, enemies[lockedTarget].gameObject.transform.position.z);
         
 
@@ -49,7 +48,6 @@ public class LockOnSystem : MonoBehaviour
     {
         if (enemies.Length == 0)
         {
-            Debug.Log("No more enemies");
             targetArrow.SetActive(false);
             lockedOn = false;
             lockedTarget = 0;

@@ -38,8 +38,6 @@ public class CombatInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"An enemy is close that we can fight is a {IsEnemyClose} statement");
-
         SetCombatIdle();
 
         ComboCheck();

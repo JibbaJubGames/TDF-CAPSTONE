@@ -9,8 +9,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("Animator for getting damaged visual")]
     public Animator animToTrigger;
 
-    static public int playerMaxHealth = 20;
-    static public int playerHealth = 15;
+    static public float playerMaxHealth = PlayerStatsScript.maxHealth;
+    static public float playerHealth = 15;
 
     static public bool midAttack = false;
     static public bool heavyComboEnd = false;
@@ -25,8 +25,7 @@ public class PlayerHealth : MonoBehaviour
     {
         DamageTimer();
 
-        if (heavyComboEnd) { Debug.Log("HEAVY FINISH ATTACK"); }
-        Debug.Log($"Mid attack is a {midAttack} statement");
+        if (heavyComboEnd) {Debug.Log("HEAVY FINISH ATTACK");}
     }
 
     private void DamageTimer()

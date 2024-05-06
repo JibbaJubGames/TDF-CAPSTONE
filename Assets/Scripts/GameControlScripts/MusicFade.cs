@@ -20,7 +20,6 @@ public class MusicFade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"Enemies nearby: {enemyCount}");
     }
 
     public void IdleMusicFadeIn()
