@@ -25,7 +25,12 @@ public class PlayerHealth : MonoBehaviour
     {
         DamageTimer();
 
-        if (heavyComboEnd) {Debug.Log("HEAVY FINISH ATTACK");}
+        playerMaxHealth = PlayerStatsScript.maxHealth;
+
+        if (playerHealth > playerMaxHealth) 
+        {
+        playerHealth = playerMaxHealth;
+        }
     }
 
     private void DamageTimer()

@@ -10,12 +10,12 @@ public class HealthUI : MonoBehaviour
     void Start()
     {
         
-        healthSlider.maxValue = PlayerHealth.playerMaxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        healthSlider.maxValue = PlayerHealth.playerMaxHealth;
         healthSlider.value = PlayerHealth.playerHealth;
     }
 }

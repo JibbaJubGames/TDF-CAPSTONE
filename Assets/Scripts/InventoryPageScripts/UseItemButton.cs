@@ -41,7 +41,7 @@ public class UseItemButton : MonoBehaviour
 
     public static void UseHealthCrystal()
     {
-        if (InventoryCount.healthCrystalCount > 0)
+        if (InventoryCount.healthCrystalCount > 0 && PlayerHealth.playerHealth < PlayerHealth.playerMaxHealth)
         {
             PlayerHealth.playerHealth = PlayerHealth.playerHealth + PlayerHealth.playerMaxHealth / 10;
             InventoryCount.healthCrystalCount--;
