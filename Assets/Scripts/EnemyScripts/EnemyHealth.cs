@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     public bool beenDamaged = false;
     private float damageTimer = 0f;
     private Animator enemyAnim;
-    private float enemyHealth = 15;
+    [SerializeField] private float enemyHealth = 15;
+    
 
     private ItemDrop dropSource;
     private EnemyAttackRandomizer attackCheck;
@@ -20,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
         attackCheck = GetComponent<EnemyAttackRandomizer>();
         enemyAnim = GetComponent<Animator>();
         dropSource = GetComponent<ItemDrop>();
+        
     }
 
     // Update is called once per frame
@@ -80,4 +83,10 @@ public class EnemyHealth : MonoBehaviour
         
         Destroy(this.gameObject, 3f);
     }
+
+    public float GetEnemyHealth()
+    {
+        return enemyHealth;
+    }
+
 }
