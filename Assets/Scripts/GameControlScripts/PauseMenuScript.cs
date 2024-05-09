@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseMenuScript : MonoBehaviour
 {
-    public bool paused;
+    public static bool paused;
     public GameObject pauseMenu;
     public float pauseTimer;
 
@@ -22,7 +22,7 @@ public class PauseMenuScript : MonoBehaviour
     void Update()
     {
         pauseTimer += Time.deltaTime;
-        if (Input.GetKeyUp(KeyCode.Escape) && !paused && pauseTimer > 0.5f) 
+        if (Input.GetKeyUp(KeyCode.Escape) && !paused && pauseTimer > 0.5f && PlayerHealth.playerHealth >= 1 && RiseBoss.bossInfoLoad < 10f) 
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

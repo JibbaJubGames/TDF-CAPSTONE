@@ -8132,14 +8132,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 4.733333
+  - time: 3.9833333
     functionName: NextLine
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 6.9166665
+  - time: 6.016667
     functionName: NextLine
     data: 
     objectReferenceParameter: {fileID: 0}

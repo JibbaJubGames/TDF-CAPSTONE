@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public PlayerDeath deadJerb;
     public bool beenDamaged = false;
     private float damageTimer = 0f;
     [Header("Animator for getting damaged visual")]
     public Animator animToTrigger;
 
     static public float playerMaxHealth = PlayerStatsScript.maxHealth;
-    static public float playerHealth = 15;
+    static public float playerHealth = playerMaxHealth;
 
     static public bool midAttack = false;
     static public bool heavyComboEnd = false;
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -26,10 +26,25 @@ public class PlayerHealth : MonoBehaviour
         DamageTimer();
 
         playerMaxHealth = PlayerStatsScript.maxHealth;
+        EnsureHealthEqualOrLessMax();
 
-        if (playerHealth > playerMaxHealth) 
+        if (playerHealth <= 0)
         {
-        playerHealth = playerMaxHealth;
+            animToTrigger.SetBool("hasDied", true);
+            deadJerb.PlayerHasDied();
+        }
+
+        if (animToTrigger.GetBool("CombatTime") == false) 
+        {
+            midAttack = false;
+        }
+    }
+
+    private static void EnsureHealthEqualOrLessMax()
+    {
+        if (playerHealth > playerMaxHealth)
+        {
+            playerHealth = playerMaxHealth;
         }
     }
 
@@ -63,6 +78,7 @@ public class PlayerHealth : MonoBehaviour
         midAttack = false;
         beenDamaged = true;
         damageTimer = 0f;
+            playerHealth-= 3;
         Debug.Log("Jerbulcha has been tackled");
         }
     }

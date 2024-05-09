@@ -50,7 +50,7 @@ public class CombatInput : MonoBehaviour
         //Step3: Move on to next combo move if yes
         //Step4: Reset combo counter if player didn't start combo with correct timing
         attackCooldown += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Mouse1) && attackCooldown >= 0 && !HeavyComboOne && IsEnemyClose)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && attackCooldown >= 0 && !HeavyComboOne && IsEnemyClose && !PauseMenuScript.paused)
         {
             animToUse.SetTrigger("HeavyAttackOne");
             HeavyComboOne = true;
@@ -73,7 +73,7 @@ public class CombatInput : MonoBehaviour
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.Mouse0) && attackCooldown >= 0 && !LightComboOne && IsEnemyClose)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && attackCooldown >= 0 && !LightComboOne && IsEnemyClose && !PauseMenuScript.paused)
         {
             animToUse.SetTrigger("LightAttackOne");
             LightComboOne = true;
