@@ -20,7 +20,7 @@ public class BlacksmithSubtitle : MonoBehaviour
     public GameObject BlacksmithUpgradeMenu;
     
     public TMP_Text subtitleText;
-    private bool atCounter = false;
+    public static bool atCounter = false;
     private Animator blacksmithAnim;
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,7 @@ public class BlacksmithSubtitle : MonoBehaviour
 
     private void OpenCloseMenu()
     {
-        if (atCounter && Input.GetKeyDown(KeyCode.Return))
+        if (atCounter && Input.GetButtonDown("Select"))
         {
             Time.timeScale = 0;
             BlacksmithUpgradeMenu.SetActive(true);
@@ -54,7 +54,7 @@ public class BlacksmithSubtitle : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        if (atCounter && BlacksmithUpgradeMenu.activeSelf == true && Input.GetKeyDown(KeyCode.Escape))
+        if (atCounter && BlacksmithUpgradeMenu.activeSelf == true && Input.GetButtonDown("Back") || (atCounter && BlacksmithUpgradeMenu.activeSelf == true && Input.GetButtonDown("Pause")))
         {
             Time.timeScale = 1;
             BlacksmithUpgradeMenu.SetActive(false); 

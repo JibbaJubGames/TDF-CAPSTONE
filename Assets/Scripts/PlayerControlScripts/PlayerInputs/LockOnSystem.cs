@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class LockOnSystem : MonoBehaviour
 {
-    public bool lockedOn;
+    public static bool lockedOn;
     public int lockedTarget = 0;
     public float lockTimer;
     public int enemyCount;
@@ -68,7 +68,7 @@ public class LockOnSystem : MonoBehaviour
 
     private void NextTarget(Collider[] enemies)
     {
-        if (lockedOn && Input.GetKeyDown(KeyCode.E))
+        if (lockedOn && Input.GetButtonDown("LockTargetUpKey") || lockedOn && Input.GetAxis("LockTargetUpController") > 0)
         {
             if (lockedTarget == enemyCount)
             {
@@ -84,7 +84,7 @@ public class LockOnSystem : MonoBehaviour
 
     private void PreviousTarget(Collider[] enemies)
     {
-        if (lockedOn && Input.GetKeyDown(KeyCode.Q))
+        if (lockedOn && Input.GetButtonDown("LockTargetDownKey") || lockedOn && Input.GetAxis("LockTargetDownController") < 0)
         {
             if (lockedTarget == 0)
             {
@@ -101,14 +101,14 @@ public class LockOnSystem : MonoBehaviour
     private void TriggerLock()
     {
         
-        if (Input.GetKeyUp(KeyCode.Tab) && lockTimer > 1f)
+        if (Input.GetButtonUp("LockOn") && lockTimer > 1f)
         {
             lockTimer = 0f;
             lockedOn = true;
             Debug.Log("Time to lock in");
             targetArrow.SetActive(true);    
         }
-        if (Input.GetKeyDown(KeyCode.Tab) && lockedOn && lockTimer > 1f )
+        if (Input.GetButtonDown("LockOn") && lockedOn && lockTimer > 1f )
         {
             lockTimer = 0f;
             targetArrow.SetActive(false);

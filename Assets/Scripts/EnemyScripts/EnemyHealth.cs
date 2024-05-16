@@ -73,7 +73,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyDeath()
     {
-        enemyAnim.SetTrigger("HasDied");
+        enemyAnim.SetBool("HasDied", true);
         if (!droppedItem)dropSource.DropRandomItem(); droppedItem = true;
         if (!isDead) MusicFade.enemyCount--;
         isDead = true;

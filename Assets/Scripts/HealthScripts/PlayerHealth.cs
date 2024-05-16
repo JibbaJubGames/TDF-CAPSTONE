@@ -38,6 +38,27 @@ public class PlayerHealth : MonoBehaviour
         {
             midAttack = false;
         }
+
+        if (midAttack == true && Input.GetAxis("Horizontal") != 0 || midAttack == true && Input.GetAxis("Vertical") != 0)
+        {
+            Debug.Log("Trying to cancel attack");
+            if (LockOnSystem.lockedOn == true)
+            {
+                animToTrigger.Play("JERBULCHA_FIGHTIDLE(LockedOn)");
+            } 
+            else
+            {
+                animToTrigger.Play("JERBULCHA_FIGHTIDLE");
+            }
+            midAttack = false;
+            animToTrigger.SetBool("HeavyAttackOne", false);
+            animToTrigger.SetBool("HeavyAttackTwo", false);
+            animToTrigger.SetBool("HeavyAttackThree", false);
+            animToTrigger.SetBool("LightAttackOne", false);
+            animToTrigger.SetBool("LightAttackTwo", false);
+            animToTrigger.SetBool("LightAttackThree", false);
+            Debug.Log($"Midattack is equal to {midAttack}");
+        }
     }
 
     private static void EnsureHealthEqualOrLessMax()
@@ -115,5 +136,10 @@ public class PlayerHealth : MonoBehaviour
         animToTrigger.SetBool("LightAttackOne", false);
         animToTrigger.SetBool("LightAttackTwo", false);
         animToTrigger.SetBool("LightAttackThree", false);
+    }
+
+    public void ResetHealth()
+    {
+        playerHealth = playerMaxHealth;
     }
 }

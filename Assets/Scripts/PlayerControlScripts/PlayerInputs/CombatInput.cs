@@ -50,13 +50,13 @@ public class CombatInput : MonoBehaviour
         //Step3: Move on to next combo move if yes
         //Step4: Reset combo counter if player didn't start combo with correct timing
         attackCooldown += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Mouse1) && attackCooldown >= 0 && !HeavyComboOne && IsEnemyClose && !PauseMenuScript.paused)
+        if (Input.GetButtonDown("HeavyAttack") && attackCooldown >= 0 && !HeavyComboOne && IsEnemyClose && !PauseMenuScript.paused)
         {
             animToUse.SetTrigger("HeavyAttackOne");
             HeavyComboOne = true;
             attackCooldown = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetButtonDown("HeavyAttack"))
         {
             if (attackCooldown >= .5 && attackCooldown <= .95f && HeavyComboOne == true)
             {
@@ -64,7 +64,7 @@ public class CombatInput : MonoBehaviour
                 animToUse.SetTrigger("HeavyAttackTwo");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetButtonDown("HeavyAttack"))
         {
             if (attackCooldown >= 1 && HeavyComboTwo == true && HeavyComboThree == false)
             {
@@ -73,13 +73,13 @@ public class CombatInput : MonoBehaviour
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.Mouse0) && attackCooldown >= 0 && !LightComboOne && IsEnemyClose && !PauseMenuScript.paused)
+        if (Input.GetButtonDown("LightAttack") && attackCooldown >= 0 && !LightComboOne && IsEnemyClose && !PauseMenuScript.paused)
         {
             animToUse.SetTrigger("LightAttackOne");
             LightComboOne = true;
             attackCooldown = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown("LightAttack"))
         {
             if (attackCooldown >= .5 && attackCooldown <= .95f && LightComboOne == true)
             {
@@ -87,7 +87,7 @@ public class CombatInput : MonoBehaviour
                 animToUse.SetTrigger("LightAttackTwo");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown("LightAttack"))
         {
             if (attackCooldown >= 1 && LightComboTwo == true && LightComboThree == false)
             {

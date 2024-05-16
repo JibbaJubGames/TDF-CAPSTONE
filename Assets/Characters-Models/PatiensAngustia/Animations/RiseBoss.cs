@@ -84,6 +84,15 @@ public class RiseBoss : MonoBehaviour
             goodbyeText[2].color = Color.Lerp(goodbyeText[2].color, Color.clear, appearSpeed * Time.deltaTime);
             gameLogo.color = Color.Lerp(gameLogo.color, Color.white, appearSpeed * Time.deltaTime * 2);
         }
+        if (bossInfoLoad > 30f)
+        {
+            gameLogo.color = Color.Lerp(gameLogo.color, Color.clear, appearSpeed * Time.deltaTime * 4);
+        }
+        if (bossInfoLoad > 35f)
+        {
+            Application.Quit();
+            Debug.Log("Application Closing");
+        }
     }
 
     public void BossBreathSound()

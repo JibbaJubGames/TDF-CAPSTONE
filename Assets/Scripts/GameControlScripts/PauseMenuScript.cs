@@ -22,7 +22,7 @@ public class PauseMenuScript : MonoBehaviour
     void Update()
     {
         pauseTimer += Time.deltaTime;
-        if (Input.GetKeyUp(KeyCode.Escape) && !paused && pauseTimer > 0.5f && PlayerHealth.playerHealth >= 1 && RiseBoss.bossInfoLoad < 10f) 
+        if (Input.GetButtonUp("Pause") && !paused && pauseTimer > 0.5f && PlayerHealth.playerHealth >= 1 && RiseBoss.bossInfoLoad < 10f) 
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -31,7 +31,7 @@ public class PauseMenuScript : MonoBehaviour
             pauseMenu.SetActive(true);
             pauseTimer = 0f;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && paused && pauseTimer == 0f) 
+        if (Input.GetButtonDown("Pause") && paused && pauseTimer == 0f) 
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

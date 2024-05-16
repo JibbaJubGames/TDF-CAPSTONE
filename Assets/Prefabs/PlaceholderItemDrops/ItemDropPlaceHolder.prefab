@@ -120,5 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab1eff55731c9849aa891649c4f2aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPool: []
+  itemPool:
+  - {fileID: 6122228235832817836, guid: 37aaa1c68e976ae439cb8589e1973cfa, type: 3}
+  - {fileID: 437960660763344014, guid: 5ba3b3424f2dbba4f946142d0eb551a7, type: 3}
+  - {fileID: 6472163370532812262, guid: 1e94fa43eede4c741aa91831bdeb7460, type: 3}
   spawn: {fileID: 0}

@@ -5,12 +5,10 @@ using UnityEngine;
 public class LockOnMovement : MonoBehaviour
 {
     private Animator movementAnim;
-    private LockOnSystem lockSystem;
     // Start is called before the first frame update
     void Start()
     {
         movementAnim = GetComponent<Animator>();
-        lockSystem = GetComponentInParent<LockOnSystem>();
     }
 
     // Update is called once per frame
@@ -25,7 +23,7 @@ public class LockOnMovement : MonoBehaviour
 
     private void StrafeBack(float vertical)
     {
-        if (vertical < 0 && lockSystem.lockedOn == true)
+        if (vertical < 0 && LockOnSystem.lockedOn == true)
         {
             movementAnim.SetBool("LockBackStep", true);
         }
@@ -37,7 +35,7 @@ public class LockOnMovement : MonoBehaviour
 
     private void StrafeLeftRight(float horizontal)
     {
-        if (horizontal < 0 && lockSystem.lockedOn == true)
+        if (horizontal < 0 && LockOnSystem.lockedOn == true)
         {
             movementAnim.SetBool("StrafeLeft", true);
         }
@@ -45,7 +43,7 @@ public class LockOnMovement : MonoBehaviour
         {
             movementAnim.SetBool("StrafeLeft", false);
         }
-        if (horizontal > 0 && lockSystem.lockedOn == true)
+        if (horizontal > 0 && LockOnSystem.lockedOn == true)
         {
             movementAnim.SetBool("StrafeRight", true);
         }
@@ -57,7 +55,7 @@ public class LockOnMovement : MonoBehaviour
 
     private void SetLockMovementSystem()
     {
-        if (lockSystem.lockedOn == true)
+        if (LockOnSystem.lockedOn == true)
         {
             movementAnim.SetBool("LockedOn", true);
         }

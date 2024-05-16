@@ -26,6 +26,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [Header("Sprint Details")]
     public bool isSprinting = false;
     public float sprintSpeedMultiplier;
+    private bool controllerSprintActive = false;
 
     [Header("Animation")]
     public Animator jerbulchaAnim;
@@ -49,7 +50,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void DiveAnimTrigger()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetButtonUp("DodgeRoll") && BlacksmithSubtitle.atCounter == false)
         {
             jerbulchaAnim.SetTrigger("Diving");
         }
@@ -57,13 +58,15 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void CheckSprint()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButtonDown("Sprint") || (Input.GetAxis("SprintController") == 1) && controllerSprintActive == false)
         {
+            controllerSprintActive = true;
             isSprinting = true;
             speed = speed * sprintSpeedMultiplier;
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetButtonUp("Sprint") || (Input.GetAxis("SprintController") <= .25f && controllerSprintActive == true)) 
         {
+            controllerSprintActive = false;
             isSprinting = false;
             speed = speed / sprintSpeedMultiplier;
         }
