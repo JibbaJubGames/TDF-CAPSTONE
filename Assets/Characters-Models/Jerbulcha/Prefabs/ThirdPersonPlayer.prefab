@@ -403,7 +403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edecaaedeeb22b449a181ff4ee3233f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockedOn: 0
   lockedTarget: 0
   lockTimer: 0
   enemyCount: 0
@@ -1533,6 +1532,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3495440294224225476, guid: 384b61499339063439cef3bcf485bd48, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4980497363997674255}
+    - targetCorrespondingSourceObject: {fileID: 3495440294224225476, guid: 384b61499339063439cef3bcf485bd48, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1450635411900573359}
   m_SourcePrefab: {fileID: 100100000, guid: 384b61499339063439cef3bcf485bd48, type: 3}
 --- !u!4 &7726062142943742885 stripped
 Transform:
@@ -1586,6 +1588,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13163e3f32df31c4b88369c1d92f0bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1450635411900573359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553554905598776341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96405b9929df0e6418a046e7d28b6a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  twoSpeed: 2
+  fourSpeed: 4
+  sixSpeed: 6
+  eightSpeed: 8
+  tenSpeed: 10
+  fifteenSpeed: 15
+  stopTime: 0.1
+  thirdPersonMovement: {fileID: 7998388029107699843}
 --- !u!4 &9079121001810464431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4308146871641194110, guid: 384b61499339063439cef3bcf485bd48, type: 3}
