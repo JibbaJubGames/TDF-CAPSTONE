@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -69,17 +70,33 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void CheckSprint()
     {
-        if (Input.GetButtonDown("Sprint") || (Input.GetAxis("SprintController") == 1) && controllerSprintActive == false)
+        //Check keyboard input to trigger sprint
+        if (Input.GetButtonDown("Sprint"))
         {
-            controllerSprintActive = true;
+            Debug.Log("We're meant to be running");                      
             isSprinting = true;
             speed = speed * sprintSpeedMultiplier;
         }
-        if (Input.GetButtonUp("Sprint") || (Input.GetAxis("SprintController") <= .25f && controllerSprintActive == true)) 
+        //Check controller input to trigger sprint
+        else if (Input.GetAxis("SprintController") == 1 && controllerSprintActive == false)
         {
-            controllerSprintActive = false;
+            isSprinting = true;
+            speed = speed * sprintSpeedMultiplier;
+            controllerSprintActive = true;
+        }
+
+        //Check keyboard input to deactivate sprint
+        if (Input.GetButtonUp("Sprint")) 
+        {
             isSprinting = false;
             speed = speed / sprintSpeedMultiplier;
+        }
+        //Check controller input to deactivate sprint
+        else if (Input.GetAxis("SprintController") <= .25f && controllerSprintActive == true)
+        {
+            isSprinting = false;
+            speed = speed / sprintSpeedMultiplier;
+            controllerSprintActive = false;
         }
     }
 
