@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     private float damageTimer = 0f;
     private Animator enemyAnim;
     [SerializeField] private float enemyHealth = 15;
-    
+    Rigidbody rb;
 
     private ItemDrop dropSource;
     private EnemyAttackRandomizer attackCheck;
@@ -22,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
         attackCheck = GetComponent<EnemyAttackRandomizer>();
         enemyAnim = GetComponent<Animator>();
         dropSource = GetComponent<ItemDrop>();
+        rb = GetComponent<Rigidbody>();
         
     }
 
@@ -55,6 +56,7 @@ public class EnemyHealth : MonoBehaviour
             enemyAnim.SetTrigger("SmallHit");
             enemyHealth -= PlayerStatsScript.damage;
             Debug.Log($"Enemy has {enemyHealth} health left");
+            
         }
     }
 

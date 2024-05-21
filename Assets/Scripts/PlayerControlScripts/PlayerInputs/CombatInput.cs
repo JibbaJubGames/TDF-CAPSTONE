@@ -24,15 +24,21 @@ public class CombatInput : MonoBehaviour
     public bool LightComboTwo;
     public bool LightComboThree;
 
+
+    [SerializeField] Transform cam;
+
     [Header("Audio Controller Holder")]
     public AudioSelector audioControl;
 
     [Header("Music Swap")]
     public MusicFade musicSwap;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -55,6 +61,7 @@ public class CombatInput : MonoBehaviour
             animToUse.SetTrigger("HeavyAttackOne");
             HeavyComboOne = true;
             attackCooldown = 0;
+            LookAwayFromCam();
         }
         if (Input.GetButtonDown("HeavyAttack"))
         {
@@ -62,6 +69,7 @@ public class CombatInput : MonoBehaviour
             {
                 HeavyComboTwo = true;
                 animToUse.SetTrigger("HeavyAttackTwo");
+                LookAwayFromCam();
             }
         }
         if (Input.GetButtonDown("HeavyAttack"))
@@ -70,6 +78,7 @@ public class CombatInput : MonoBehaviour
             {
                 HeavyComboThree = true;
                 animToUse.SetTrigger("HeavyAttackThree");
+                LookAwayFromCam();
             }
         }
         
@@ -78,6 +87,7 @@ public class CombatInput : MonoBehaviour
             animToUse.SetTrigger("LightAttackOne");
             LightComboOne = true;
             attackCooldown = 0;
+            LookAwayFromCam();
         }
         if (Input.GetButtonDown("LightAttack"))
         {
@@ -85,6 +95,7 @@ public class CombatInput : MonoBehaviour
             {
                 LightComboTwo = true;
                 animToUse.SetTrigger("LightAttackTwo");
+                LookAwayFromCam();
             }
         }
         if (Input.GetButtonDown("LightAttack"))
@@ -93,6 +104,7 @@ public class CombatInput : MonoBehaviour
             {
                 LightComboThree = true;
                 animToUse.SetTrigger("LightAttackThree");
+                LookAwayFromCam();
             }
         }
 
@@ -101,6 +113,18 @@ public class CombatInput : MonoBehaviour
          ResetComboCounter();
         }
         
+    }
+
+    private void LookAwayFromCam()
+    {   
+      transform.rotation = cam.transform.rotation;
+     
+     transform.eulerAngles = new Vector3
+    (     
+     transform.eulerAngles.x - transform.eulerAngles.x,
+     transform.eulerAngles.y,
+     transform.eulerAngles.z - transform.eulerAngles.z
+     );
     }
 
     private void ResetComboCounter()

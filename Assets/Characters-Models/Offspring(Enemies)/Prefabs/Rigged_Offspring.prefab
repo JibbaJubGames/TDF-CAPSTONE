@@ -2287,8 +2287,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beenDamaged: 0
-  enemyHealth: 15
+  enemyHealth: 5
   isDead: 0
+  player: {fileID: 0}
+  speed: 5
 --- !u!114 &2666852772871617079
 MonoBehaviour:
   m_ObjectHideFlags: 0
