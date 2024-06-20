@@ -61,7 +61,7 @@ public class CombatInput : MonoBehaviour
             animToUse.SetTrigger("HeavyAttackOne");
             HeavyComboOne = true;
             attackCooldown = 0;
-            LookAwayFromCam();
+           // LookAwayFromCam();
         }
         if (Input.GetButtonDown("HeavyAttack"))
         {
@@ -69,7 +69,7 @@ public class CombatInput : MonoBehaviour
             {
                 HeavyComboTwo = true;
                 animToUse.SetTrigger("HeavyAttackTwo");
-                LookAwayFromCam();
+              //  LookAwayFromCam();
             }
         }
         if (Input.GetButtonDown("HeavyAttack"))
@@ -78,7 +78,7 @@ public class CombatInput : MonoBehaviour
             {
                 HeavyComboThree = true;
                 animToUse.SetTrigger("HeavyAttackThree");
-                LookAwayFromCam();
+              //  LookAwayFromCam();
             }
         }
         
@@ -87,7 +87,7 @@ public class CombatInput : MonoBehaviour
             animToUse.SetTrigger("LightAttackOne");
             LightComboOne = true;
             attackCooldown = 0;
-            LookAwayFromCam();
+          //  LookAwayFromCam();
         }
         if (Input.GetButtonDown("LightAttack"))
         {
@@ -95,7 +95,7 @@ public class CombatInput : MonoBehaviour
             {
                 LightComboTwo = true;
                 animToUse.SetTrigger("LightAttackTwo");
-                LookAwayFromCam();
+             //   LookAwayFromCam();
             }
         }
         if (Input.GetButtonDown("LightAttack"))
@@ -104,7 +104,7 @@ public class CombatInput : MonoBehaviour
             {
                 LightComboThree = true;
                 animToUse.SetTrigger("LightAttackThree");
-                LookAwayFromCam();
+              //  LookAwayFromCam();
             }
         }
 

@@ -19,10 +19,19 @@ public class SkipCutscene : MonoBehaviour
     void Update()
     {
 
+        if (Input.anyKey)
+        {
+            readyToSkip = true;
+        }
+
     if (readyToSkip)
         {
             startCountdown += Time.deltaTime;
             skipCutscene.color = Color.Lerp (skipCutscene.color, Color.white, 2 * Time.deltaTime);
+            if (Input.anyKey && startCountdown > .5f)
+            {
+                CutsceneOver("LevelScene");
+            }
         }
         if (startCountdown > 5)
         {

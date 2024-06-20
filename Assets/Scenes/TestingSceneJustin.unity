@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beenDamaged: 0
+  enemyHealth: 15
   isDead: 0
 --- !u!114 &107500315
 MonoBehaviour:
@@ -1373,7 +1374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580158138}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19524452, y: -0.013604484, z: 0.0027085948, w: 0.98065645}
+  m_LocalRotation: {x: 0.19524452, y: -0.013604518, z: 0.0027086013, w: 0.98065645}
   m_LocalPosition: {x: 0.122104585, y: 3.829344, z: -4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1638,6 +1639,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 83.99562
       objectReference: {fileID: 0}
+    - target: {fileID: 4959657747449038947, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959657747449038947, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6031531140603597875, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 4.397753
@@ -1649,6 +1658,10 @@ PrefabInstance:
     - target: {fileID: 6031531140603597875, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45.424046
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002265640683246747, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7098687818680075910, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2165,7 +2178,7 @@ GameObject:
   - component: {fileID: 837529198}
   m_Layer: 6
   m_Name: TestDummyRight
-  m_TagString: Enemy
+  m_TagString: Offspring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2202,6 +2215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beenDamaged: 0
+  enemyHealth: 15
   isDead: 0
 --- !u!1 &911144270
 GameObject:
@@ -3497,7 +3511,7 @@ GameObject:
   - component: {fileID: 1394317960}
   m_Layer: 6
   m_Name: TestDummyLeft
-  m_TagString: Enemy
+  m_TagString: Offspring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3534,6 +3548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beenDamaged: 0
+  enemyHealth: 15
   isDead: 0
 --- !u!1 &1463447014
 GameObject:
@@ -3706,7 +3721,7 @@ GameObject:
   - component: {fileID: 1639668494}
   m_Layer: 6
   m_Name: TestDummyMid
-  m_TagString: Enemy
+  m_TagString: Offspring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3743,6 +3758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beenDamaged: 0
+  enemyHealth: 15
   isDead: 0
 --- !u!1 &1792009559
 GameObject:
@@ -4673,10 +4689,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 580158141}
-    - target: {fileID: 8075125083543433258, guid: 23a09bab9a58f034992b57b8cbe7d7ce, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8700476346843786079, guid: 23a09bab9a58f034992b57b8cbe7d7ce, type: 3}
       propertyPath: m_Name
       value: ThirdPersonPlayer
@@ -4839,6 +4851,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rigged_Offspring
       objectReference: {fileID: 0}
+    - target: {fileID: 4959657747449038947, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959657747449038947, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002265640683246747, guid: 2b94738d4ca1af841b478d1db4000621, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4906,11 +4930,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8361694645543677043, guid: 6996f0b3b86db8b42967577c8470e04a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.013604492
+      value: -0.01360451
       objectReference: {fileID: 0}
     - target: {fileID: 8361694645543677043, guid: 6996f0b3b86db8b42967577c8470e04a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.002708596
+      value: 0.0027085994
       objectReference: {fileID: 0}
     - target: {fileID: 9018481889101846997, guid: 6996f0b3b86db8b42967577c8470e04a, type: 3}
       propertyPath: m_Follow

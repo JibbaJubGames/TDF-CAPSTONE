@@ -54,7 +54,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         DiveAnimTrigger();
 
-        BurstTimer();
+       // BurstTimer();
 
 
 
@@ -78,7 +78,7 @@ public class ThirdPersonMovement : MonoBehaviour
             speed = speed * sprintSpeedMultiplier;
         }
         //Check controller input to trigger sprint
-        else if (Input.GetAxis("SprintController") == 1 && controllerSprintActive == false)
+        else if (Input.GetAxis("SprintController") == 1 && controllerSprintActive == false && isSprinting == false)
         {
             isSprinting = true;
             speed = speed * sprintSpeedMultiplier;
@@ -86,7 +86,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
         //Check keyboard input to deactivate sprint
-        if (Input.GetButtonUp("Sprint")) 
+        if (Input.GetButtonUp("Sprint") && isSprinting) 
         {
             isSprinting = false;
             speed = speed / sprintSpeedMultiplier;
@@ -193,31 +193,29 @@ public class ThirdPersonMovement : MonoBehaviour
         
     }
     
-    public void BurstForward(float speed,float timeToStop)
-    {   //used to move character forward during actions eg attacks, rolls, ect
-        currentTime = timeToStop;
-        actionSpeed = speed;
-        Debug.Log("aaaaaaaaaaaaaaaaaaaaaah");
+    //public void BurstForward(float speed,float timeToStop)
+    //{   //used to move character forward during actions eg attacks, rolls, ect
+    //    currentTime = timeToStop;
+    //    actionSpeed = speed;
+    //    Debug.Log("aaaaaaaaaaaaaaaaaaaaaah");
+//
+   // }
 
-    }
-
-    void BurstTimer()
-    {
-        //timer to stop action movement
-        currentTime -= Time.deltaTime;
-
-        if (currentTime>=0.0f) 
-        {
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
-            float targetAngle = MathF.Atan2(direction.x, direction.z) * 360 / (MathF.PI * 2) + cam.eulerAngles.y;
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime * actionSpeed);
-            
-
-        }
-    }
+   // void BurstTimer()
+   // {
+   //     //timer to stop action movement
+   //     currentTime -= Time.deltaTime;
+//
+  //      if (currentTime>=0.0f) 
+  //      {
+   //         float horizontal = Input.GetAxis("Horizontal");
+   //         float vertical = Input.GetAxis("Vertical");
+   //         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+    //        float targetAngle = MathF.Atan2(direction.x, direction.z) * 360 / (MathF.PI * 2) + cam.eulerAngles.y;
+    //        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+    //        controller.Move(moveDir.normalized * speed * Time.deltaTime * actionSpeed);
+   //     }
+   // }
 
     
 

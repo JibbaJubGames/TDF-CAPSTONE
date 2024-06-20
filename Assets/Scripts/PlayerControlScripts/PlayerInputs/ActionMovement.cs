@@ -15,41 +15,41 @@ public class ActionMovement : MonoBehaviour
     [SerializeField] float stopTime = 0.1f;
     [SerializeField] float longStopTime = 0.1f;
 
-    [SerializeField] ThirdPersonMovement thirdPersonMovement;
+    //[SerializeField] ThirdPersonMovement thirdPersonMovement;
 
     public void QuarterSpeed()
     {
-        thirdPersonMovement.BurstForward(quarterSpeed,stopTime);
+       // thirdPersonMovement.BurstForward(quarterSpeed,stopTime);
     }
 
     public void HalfSpeed()
     {
-        thirdPersonMovement.BurstForward(halfSpeed, stopTime);
+       // thirdPersonMovement.BurstForward(halfSpeed, stopTime);
     }
 
     public void NormalSpeed()
     {
-        thirdPersonMovement.BurstForward(normalSpeed, stopTime);
+       // thirdPersonMovement.BurstForward(normalSpeed, stopTime);
     }
 
     public void DoubleSpeed()
     {
-        thirdPersonMovement.BurstForward(doubleSpeed, stopTime);
+       // thirdPersonMovement.BurstForward(doubleSpeed, stopTime);
     }
 
     public void longDoubleSpeed()
     {
-        thirdPersonMovement.BurstForward(doubleSpeed, longStopTime);
+       // thirdPersonMovement.BurstForward(doubleSpeed, longStopTime);
     }
 
     public void BackwardsSpeed()
     {
-        thirdPersonMovement.BurstForward(backwardsSpeed, stopTime);
+       // thirdPersonMovement.BurstForward(backwardsSpeed, stopTime);
     }
 
     public void DoubleBackwardsSpeed()
     {
-        thirdPersonMovement.BurstForward(doubleBackwardsSpeed, stopTime);
+       // thirdPersonMovement.BurstForward(doubleBackwardsSpeed, stopTime);
     }
 
    
